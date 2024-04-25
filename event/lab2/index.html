@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="">
+    <!-- HTML Attribute (1)-->
+    <!-- <button onclick="cSubmit()">Submit</button> -->
+    <!-- <button>Submit</button> -->
+  </form>
+  <script>
+    function cSubmit() {
+      alert('Form is submitted')
+    }
+    const button = document.querySelector('button')
+    
+    // DOM property (2)
+    // button.onclick = cSubmit;
+    // Remove Dom property (2)
+    // button.onclick = null
+
+    
+    // Event listener (3)
+    button.addEventListener('click', cSubmit)
+    // Remove Event listener (3)
+    // button.removeEventListener('click', cSubmit)
+    
+  </script>
+</body>
+</html>

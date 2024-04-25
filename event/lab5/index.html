@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <label>nickname</label>
+  <input type="text" name = "nickname">
+  <label>job</label>
+  <input type="text" name = "job">
+  <script>
+    const nickname = document.getElementsByName("nickname")[0]
+    const job = document.getElementsByName("job")[0]
+    function getAttributeName (element) {
+      console.log(element.target.name)
+    }
+    function getText (element) {
+      console.log(element.target.value)
+    }
+    nickname.addEventListener ('click', getAttributeName)
+    job.addEventListener ('click', getAttributeName)
+    nickname.addEventListener ('input', getText)
+    job.addEventListener ('input', getText)
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" placeholder="Phone Number">
+  <button>Check</button>
+  <span></span>
+  <script>
+    const input = document.querySelector('input')
+    const button = document.querySelector('button')
+    const span = document.querySelector('span')
+    button.addEventListener('click', function(event){
+      if (!input.value.trim()) {
+        span.innerText = 'Phone number is required'
+      }
+      else if (isNaN(+input.value)) {
+        span.innerText = 'Phone Number is invalid'
+      }
+      else if (input.value.length < 10) {
+      span.innerText = 'Invalid length'
+      }
+      else {
+      alert('Your number is valid')
+      }
+    })
+  </script>
+</body>
+</html>

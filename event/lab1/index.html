@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>This is a button</button>
+  <script>
+    const button = document.querySelector('button')
+    button.addEventListener('click', () => alert('1'));  // (1) ประกาศ event alert('1')
+    button.removeEventListener('click', () => alert('1')); // (2) ไม่สามารถ remove ข้อ 1 ออกได้ เพราะเป็นคนละ object
+    button.onclick = () => alert(2); // (3) alert('2') ตอน click
+    // จึงทำให้ alert('1') และ alert('2') ตอน click
+  </script>
+</body>
+</html>

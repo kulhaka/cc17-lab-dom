@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .linethrough {
+      text-decoration: line-through ;
+    }
+  </style>
+</head>
+<body>
+  <button id="add">Add</button>
+  <input type="text" id="newinput" hidden>
+  <button id="addnewinput" hidden>OK</button>
+  <ul id="list"></ul>
+  
+
+  <script>
+    const add = document.getElementById('add')
+    const newinput = document.getElementById('newinput')
+    const addnewinput = document.getElementById('addnewinput')
+    const list = document.getElementById('list')
+    
+    add.addEventListener('click', function () {
+      newinput.hidden = ''
+      addnewinput.hidden = ''
+    })
+
+    addnewinput.addEventListener('click', function () {
+      newinput.hidden = 'true'
+      addnewinput.hidden = 'true'
+      if (newinput.value.trim()) {
+        const newli = document.createElement('li')
+        const edit = document.createElement('button')
+        const del = document.createElement('button')
+
+        newli.innerHTML = newinput.value
+        edit.innerText = 'Edit'
+        del.innerText = 'Del'
+
+        newli.append(edit)
+        newli.append(del)
+
+        function editBtn () {
+          const previoustext = newli.firstChild.textContent
+          const input = document.createElement('input')
+          input.value = previoustext
+          newli.firstChild.replaceWith(input)
+          edit.removeEventListener('click', editBtn)
+          edit.addEventListener ('click', editBtnTwo)
+        }
+
+        function editBtnTwo () {
+          const input = newli.firstChild.value
+          if (input.trim()) {
+          newli.firstChild.replaceWith(input)
+          edit.removeEventListener('click', editBtnTwo)
+          edit.addEventListener ('click', editBtn)
+        }
+        }
+
+        edit.addEventListener('click', editBtn)
+
+        del.addEventListener('click', function () {
+          list.removeChild(newli);
+        })
+        list.append(newli)
+
+        function toggleLinethrough() {
+        newli.classList.toggle('linethrough');
+        }
+
+        edit.addEventListener('click', function (event) {
+          event.stopPropagation();
+        });
+
+        del.addEventListener('click', function (event) {
+          event.stopPropagation();
+        });
+  
+        newli.addEventListener('click', toggleLinethrough);
+        
+      }
+      newinput.value = ''
+    })
+
+
+  </script>
+</body>
+</html>
