@@ -8,6 +8,9 @@
     .linethrough {
       text-decoration: line-through ;
     }
+    .li {
+      width: fit-content;
+    }
   </style>
 </head>
 <body>
@@ -36,6 +39,8 @@
         const edit = document.createElement('button')
         const del = document.createElement('button')
 
+        newli.classList.toggle('li')
+
         newli.innerHTML = newinput.value
         edit.innerText = 'Edit'
         del.innerText = 'Del'
@@ -50,6 +55,7 @@
           newli.firstChild.replaceWith(input)
           edit.removeEventListener('click', editBtn)
           edit.addEventListener ('click', editBtnTwo)
+          newli.removeEventListener('click', toggleLinethrough)
         }
 
         function editBtnTwo () {
@@ -58,6 +64,7 @@
           newli.firstChild.replaceWith(input)
           edit.removeEventListener('click', editBtnTwo)
           edit.addEventListener ('click', editBtn)
+          newli.addEventListener('click', toggleLinethrough)
         }
         }
 
